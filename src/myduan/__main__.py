@@ -36,6 +36,7 @@ with open(outfile, 'w') as foutfile:
         for line in lines:
             if state == "searching":
                 if line.startswith("CREATE TABLE `%s`" % t):
+                    print("found %s" % t)
                     state = "found"
             if state == "found":
                 if line.strip().startswith("`"):
