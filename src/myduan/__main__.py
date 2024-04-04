@@ -66,5 +66,5 @@ with open(outfile, 'w') as foutfile:
             for line in lines:
                 if line.strip().startswith("INSERT INTO `%s`" % t):
                     # strip to "VALUES "
-                    line_ = lines[lines.find(" VALUES ") + 8:]
+                    line_ = line[line.find(" VALUES ") + 8:]
                     tsvf.write("%s\n" % line_)
