@@ -59,3 +59,12 @@ with open(outfile, 'w') as foutfile:
             for line in lines:
                 if line.strip().startswith("INSERT INTO `%s`" % t):
                     tisf.write("%s\n" % line)
+
+    # step 5 // save INSERT statements as TSV each table
+    for t in tbl_names:
+        with open(os.path.join(outdir, t + ".tsv"), 'w') as tsvf:
+            for line in lines:
+                if line.strip().startswith("INSERT INTO `%s`" % t):
+                    # strip to "VALUES "
+                    line_ = lines[lines.find(" VALUES ") + 8:]
+                    tsvf.write("%s\n" % line_)
