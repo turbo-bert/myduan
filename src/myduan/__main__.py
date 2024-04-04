@@ -20,4 +20,4 @@ with open(outfile, 'w') as foutfile:
         if line.startswith("CREATE TABLE "):
             tbl_name = line.split("`")[1]
             tbl_names.append(tbl_name)
-            foutfile.write("tabelle %s\n")
+            foutfile.write("tabelle %s\n" % tbl_name)
