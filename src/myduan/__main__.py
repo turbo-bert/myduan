@@ -12,6 +12,20 @@ outdir = sys.argv[3]
 
 os.makedirs(outdir, exist_ok=True)
 
+
+def insert_parser(line, sep='\t'):
+    i=0
+    l = len(line)
+    item = None
+    res = line[1:-1].split("),(")
+    for r in res:
+        yield r
+    # while i<l:
+    #     if line[i] == "(":
+    #         item = []
+    #         i+=1
+
+
 with open(outfile, 'w') as foutfile:
 
     # step 0 // binary utf8 safe read
@@ -67,4 +81,5 @@ with open(outfile, 'w') as foutfile:
                 if line.strip().startswith("INSERT INTO `%s`" % t):
                     # strip to "VALUES "
                     line_ = line[line.find(" VALUES ") + 8:]
-                    tsvf.write("%s\n" % line_)
+                    for item in insert_parser(line_):
+                        tsvf.write("%s\n" % item)
