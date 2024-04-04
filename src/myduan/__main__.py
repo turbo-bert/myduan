@@ -38,6 +38,7 @@ with open(outfile, 'w') as foutfile:
                 if line.startswith("CREATE TABLE `%s`" % t):
                     print("found %s" % t)
                     state = "found"
+                    continue
             if state == "found":
                 if line.strip().startswith("`"):
                     c_name = line.split("`")[1]
