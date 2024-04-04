@@ -8,7 +8,7 @@ if len(sys.argv) <= 1:
 
 srcfile = sys.argv[1]
 outfile = sys.argv[2]
-outdir = sys.argv[2]
+outdir = sys.argv[3]
 
 os.makedirs(outdir, exist_ok=True)
 
