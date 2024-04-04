@@ -52,3 +52,10 @@ with open(outfile, 'w') as foutfile:
     for t in tbl_names:
         with open(os.path.join(outdir, t + ".def"), 'w') as tdf:
             tdf.write("\n".join(tbl_columns[t]))
+
+    # step 4 // save INSERT statements for each table
+    for t in tbl_names:
+        with open(os.path.join(outdir, t + ".inserts"), 'w') as tisf:
+            for line in lines:
+                if line.strip().startswith("INSERT INTO `%s`" % t):
+                    tisf.write("%s\n" % line)
