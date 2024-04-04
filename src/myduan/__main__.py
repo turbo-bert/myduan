@@ -42,6 +42,7 @@ with open(outfile, 'w') as foutfile:
                 if line.strip().startswith("`"):
                     c_name = line.split("`")[1]
                     cols.append(c_name)
+                    print("col %s" % c_name)
                 else:
                     break
         tbl_columns[t] = cols
